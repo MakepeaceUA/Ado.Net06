@@ -55,7 +55,7 @@ namespace FactoryProvader
                         {
                             Console.WriteLine("Новое имя продукта: ");
                             string NewName = Console.ReadLine();
-                            await UpdateProductsAsync(connection, NewId, NewName);
+                            await UpdateAsync(connection, NewId, NewName);
                         }
                         else
                         {
@@ -66,7 +66,7 @@ namespace FactoryProvader
                         Console.WriteLine("\nВведите ID для удаления: ");
                         if (int.TryParse(Console.ReadLine(), out int DelId))
                         {
-                            await DeleteProductAsync(connection, DelId);
+                            await DeleteAsync(connection, DelId);
                         }
                         else
                         {
@@ -103,7 +103,7 @@ namespace FactoryProvader
             }
         }
 
-        static async Task UpdateProductsAsync(DbConnection connection, int id, string newName)
+        static async Task UpdateAsync(DbConnection connection, int id, string newName)
         {
             using (var command = connection.CreateCommand())
             {
@@ -126,7 +126,7 @@ namespace FactoryProvader
             }
         }
 
-        static async Task DeleteProductAsync(DbConnection connection, int id)
+        static async Task DeleteAsync(DbConnection connection, int id)
         {
             using (var command = connection.CreateCommand())
             {
